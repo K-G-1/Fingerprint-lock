@@ -50,7 +50,7 @@ char PcdHalt(void)
  
     status = PcdComMF522(PCD_TRANSCEIVE,ucComMF522Buf,4,ucComMF522Buf,&unLen);
 
-    return MI_OK;
+    return status;
 }
 char MFRC522_Reset(void) 
 { 
@@ -116,7 +116,7 @@ u32 ReadID(void)
 }
 void WriteRawRC(unsigned char Address, unsigned char value)   //Ð´¼Ä´æÆ÷
 {  
-    unsigned char i, ucAddr;
+    unsigned char  ucAddr;
     ucAddr = ((Address<<1)&0x7E);
     MYRC522_CS = 0;
 

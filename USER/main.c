@@ -23,20 +23,24 @@ u16 ValidN;//模块内有效指纹个数
 *@Description	:字符串匹配时易发生越界现象
 *@Author		:K.G. 
 ****************************************************/
-u8 key_input[5]={"    "};
 u8 use_machine = 0 ;
-u8 fingerprint_flag = 0;
+u8 key_input[5]={"    "};
 u8 empty_key[4]={0,0,0,0};
-u8 password_status = 0;
 u8 password[4]={"1234"};
-u8 fingerprint_status = 0;
+u8 num1 = 0;
 u8 ic_card_key[4]={6,6,6,6};
+u8 num2 = 0;
+
+u8 password_status = 0;
 u8 ic_card_status = 0;
+u8 fingerprint_status = 0;
+u8 fingerprint_flag = 0;
+u8 enter_press = 0;
 u8 control_door_flag = 0;
 
 u8 display_manual = 0;
 u8 manual_cmd = 0;
-u8 enter_press = 0;
+
 
 /***************************************************
 *@version		:V1.0
@@ -46,7 +50,7 @@ u8 enter_press = 0;
 ****************************************************/
 int main()
 {
-    u8 key_value = 0;
+//    u8 key_value = 0;
     u8 error_count = 0;
     u8 triget = 0;
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
@@ -337,6 +341,26 @@ int main()
             {
                 enter_press = 0;
                 add_ic();    
+            }
+        }
+        else if(manual_cmd == 14&&triget == 0)
+        {
+            triget = 1;
+            BACK_COLOR = WHITE;
+            LCD_Fill(0,0,130,100,WHITE);
+            LCD_ShowString(0,15,12*10,12,12,"input old password");
+            LCD_ShowString(0,30,12*10,12,12,"del fingerprint     ");
+            password_status = 0;
+            ic_card_status = 0;
+            fingerprint_status = 11;
+        }
+        else if(manual_cmd ==14)
+        {
+
+            if(enter_press == 1)
+            {
+                enter_press = 0;
+                del_fingerprint();
             }
         }
         else if(manual_cmd == 15&&triget == 0)

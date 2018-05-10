@@ -162,7 +162,7 @@ void use_manual(u8 key_value)
                 key_input[num] = key_value+0x30;
                 num++;
             }
-            else if(key_value == 10&&manual_cmd >= 0)                //É¾³ıÃÜÂë                
+            else if(key_value == 10&&manual_cmd >= 10)                //É¾³ıÃÜÂë                
             {
                 num--;
                 key_input[num]=' ';           

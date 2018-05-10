@@ -32,8 +32,8 @@ u8 RC522_search(void)
 u8 RC522_Read_Mess(void)
 {
 	static u8 status;
-	static u8 *Str_temp;
-    u8 *key_temp;
+	static char *Str_temp;
+    char *key_temp;
     status = PcdRequest(0x52,Card_Type);			
     
 
@@ -147,7 +147,7 @@ u8  write_DoorKey(u8 *key,u8* name)  //写入”看门"密码
 u8 RC522_Add_ic_card(void)
 {
     char status;
-	u8 i;
+
 	u8 Card_Type[4];
 	status = PcdRequest(0x52,Card_Type);			
 	status = PcdAnticoll(CardID);/*防冲撞*/
@@ -179,7 +179,12 @@ u8 RC522_Add_ic_card(void)
 //	status = PcdWrite(1,RC522_Wbuff);
 	return status;
 }
-
+/***************************************************
+*@version		:V1.0
+*@CreatDate		:2018/5/5
+*@Description	:选卡之后向快2写入0000
+*@Author		:K.G. 
+****************************************************/
 u8 RC522_del_ic_card(void)
 {
     char status;

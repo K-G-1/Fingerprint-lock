@@ -807,13 +807,13 @@ void add_fingerprint(void)
     {
         if(my_strcmp((const char *)password, (const char *)key_input) == 0)
         {
-            LCD_ShowString(0,15,12*10,12,12,"please press      ");
-            LCD_Fill(0,130,130,160,WHITE);
+            LCD_ShowString(0,145,12*10,12,12,"please press finger");
+            LCD_ShowString(0,45,12*10,12,12,"please press enter  ");
             fingerprint_status = 2;
         }
         else 
         {
-            LCD_ShowString(0,30,12*10,12,12,"password error     ");
+            LCD_ShowString(0,130,12*10,12,12,"password error     ");
         }
     }
     else if(fingerprint_status ==2 )
@@ -825,11 +825,11 @@ void add_fingerprint(void)
         }
         else if(fingerprint_flag == 1)
         {
-            LCD_ShowString(0,115,120,12,12,"fingerprint is bad!!!");
+            LCD_ShowString(0,45,120,12,12,"fingerprint is bad!!!");
             fingerprint_status = 0;
         }
 //                    while(fingerprint_error<100)
-        LCD_ShowString(0,15,12*10,12,12,"add fingerprint ok  ");
+        LCD_ShowString(0,45,12*10,12,12,"add fingerprint ok  ");
 
         fingerprint_status = 0;
 
@@ -837,3 +837,63 @@ void add_fingerprint(void)
     memset(key_input,0,sizeof(key_input));
     
 }
+/***************************************************
+*@version		:V1.0
+*@CreatDate		:2018/5/5
+*@Description	:É¾³ýÖ¸ÎÆ
+*@Author		:K.G. 
+****************************************************/
+void del_fingerprint()
+{
+    static u8 status = 0;
+    static u8 del_num = 255;
+    if(fingerprint_status == 11)
+    {
+
+        if(my_strcmp((const char *)password, (const char *)key_input) == 0)
+        {
+            LCD_ShowString(0,15,12*10,12,12,"input want del FR");
+
+            fingerprint_status = 12;
+        }
+        else 
+        {
+            LCD_ShowString(0,30,12*10,12,12,(u8 *)"password error     ");
+        }
+    }
+    else if(fingerprint_status == 12)
+    {
+        del_num = key_input[0] - 0x30;
+        LCD_ShowString(0,30,12*10,12,12,(u8 *)"press enter angin ");
+
+        LCD_ShowString(0,145,12*10,12,12,"sure del the:");
+        LCD_ShowNum(12*7,145,del_num,1,12);
+        fingerprint_status = 13;
+
+    }
+    else if(fingerprint_status ==13 )
+    {
+        if(fingerprint_flag == 0)
+        {
+            
+            status = PS_DeletChar(del_num,1);//É¾³ýÖ¸ÎÆ
+            if(status == 0)
+            {
+                LCD_ShowString(0,145,12*10,12,12,"del fingerprint ok  ");
+            }
+            else 
+                LCD_ShowString(0,145,12*10,12,12,"del fingerprint faild");
+            fingerprint_status = 0;
+        }
+        else if(fingerprint_flag == 1)
+        {
+            LCD_ShowString(0,115,120,12,12,"menchine is bad!!!");
+            fingerprint_status = 0;
+        }
+
+    }
+    memset(key_input,0,sizeof(key_input));
+}
+
+
+

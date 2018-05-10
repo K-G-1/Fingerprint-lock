@@ -65,6 +65,7 @@ const char *EnsureMessage(u8 ensure);//确认码错误信息解析
 void press_FR(void);
 void Add_FR(void);
 void add_fingerprint(void);
+void del_fingerprint(void);
 #endif
 
 

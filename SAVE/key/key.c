@@ -345,6 +345,7 @@ int my_strcmp(char const *p,char const *q)
         return 1;  
     if(*p<*q)  
         return -1;  
+    return -1;
 }  
 
 /***************************************************
