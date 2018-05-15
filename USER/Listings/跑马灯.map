@@ -2538,34 +2538,34 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       262         14          0          0          0       2240   24cxx.o
-      3910       1300          0          6         12      15405   as608.o
-       268         16          0          4          0       2271   delay.o
-       312         12          0          0          0       1483   door.o
-       628         84          0          0          0       3616   iic.o
-      1980        420          0          2          0       3704   key.o
-      1878        102      26916          4         10      12016   lcd.o
-        60          4          0          0          0        471   led.o
-      2668        508          0         30          0       2870   main.o
-       504         60         36         36    1218560       6098   malloc.o
-       180         24          0          0          0     291353   misc.o
-      1620         42          0          0          0      10392   rc522.o
-      1572        462          0         36         32       4459   rfid_api.o
-       622         24          0          0          0       2176   spi.o
-        36          8        392          0       1024        828   startup_stm32f40_41xxx.o
-       248          0          0          0          0       3760   stm32f4xx_gpio.o
-        26          0          0          0          0       3698   stm32f4xx_it.o
-       392         48          0         16          0       5465   stm32f4xx_rcc.o
-        84          0          0          0          0       1609   stm32f4xx_spi.o
-       218         28          0          0          0       3919   stm32f4xx_tim.o
-       674         42          0          0          0       5203   stm32f4xx_usart.o
-       340         32          0          0          0       1353   system_stm32f4xx.o
-       876         72          0          5          0       3762   timer.o
-       252         22          0          6          0       3536   usart.o
-       324         32          0          2        800       1954   usart2.o
+       262         14          0          0          0       2276   24cxx.o
+      3910       1300          0          6         12      15665   as608.o
+       268         16          0          4          0       2323   delay.o
+       312         12          0          0          0       1511   door.o
+       628         84          0          0          0       3684   iic.o
+      1980        420          0          2          0       3760   key.o
+      1878        102      26916          4         10      12204   lcd.o
+        60          4          0          0          0        479   led.o
+      2668        508          0         30          0       2902   main.o
+       504         60         36         36    1218560       6194   malloc.o
+       180         24          0          0          0     291473   misc.o
+      1620         42          0          0          0      10548   rc522.o
+      1572        462          0         36         32       4551   rfid_api.o
+       622         24          0          0          0       2208   spi.o
+        36          8        392          0       1024        840   startup_stm32f40_41xxx.o
+       248          0          0          0          0       3828   stm32f4xx_gpio.o
+        26          0          0          0          0       3782   stm32f4xx_it.o
+       392         48          0         16          0       5553   stm32f4xx_rcc.o
+        84          0          0          0          0       1633   stm32f4xx_spi.o
+       218         28          0          0          0       3987   stm32f4xx_tim.o
+       674         42          0          0          0       5279   stm32f4xx_usart.o
+       340         32          0          0          0       1377   system_stm32f4xx.o
+       876         72          0          5          0       3838   timer.o
+       252         22          0          6          0       3584   usart.o
+       324         32          0          2        800       1994   usart2.o
 
     ----------------------------------------------------------------------
-     19960       3356      27376        148    1220460     393641   Object Totals
+     19960       3356      27376        148    1220460     395473   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         26          0          0          1         22          0   (incl. Padding)
 
@@ -2622,8 +2622,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     23748       3468      27376        148    1220460     380381   Grand Totals
-     23748       3468      27376        148    1220460     380381   ELF Image Totals
+     23748       3468      27376        148    1220460     382213   Grand Totals
+     23748       3468      27376        148    1220460     382213   ELF Image Totals
      23748       3468      27376        148          0          0   ROM Totals
 
 ==============================================================================

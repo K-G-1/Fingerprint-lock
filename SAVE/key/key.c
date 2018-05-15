@@ -14,7 +14,7 @@
 void key_init()
 {
 	GPIO_InitTypeDef GPIO_InitStruct;
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
 	
 	
 	GPIO_InitStruct.GPIO_Pin=GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11;
@@ -22,16 +22,16 @@ void key_init()
 	GPIO_InitStruct.GPIO_OType=GPIO_OType_PP;
 	GPIO_InitStruct.GPIO_PuPd=GPIO_PuPd_UP;
 	GPIO_InitStruct.GPIO_Speed=GPIO_High_Speed;
-    GPIO_Init(GPIOE,&GPIO_InitStruct);
+    GPIO_Init(GPIOD,&GPIO_InitStruct);
     
     
     GPIO_InitStruct.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15;
     GPIO_InitStruct.GPIO_Mode=GPIO_Mode_IN;
     GPIO_InitStruct.GPIO_PuPd=GPIO_PuPd_DOWN;
-    GPIO_Init(GPIOE,&GPIO_InitStruct);
+    GPIO_Init(GPIOD,&GPIO_InitStruct);
     
-    GPIO_SetBits( GPIOE,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11);  
-    GPIO_ResetBits( GPIOE,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15); 
+    GPIO_SetBits( GPIOD,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11);  
+    GPIO_ResetBits( GPIOD,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15); 
 }
 /***************************************************
 *@version		:V1.0
@@ -82,16 +82,16 @@ char keypress(void)
     static u8 KeyHold = 0;
     int KeyValue=17;  
     
-    if((GPIO_ReadInputData(GPIOE)>>8&0xFF)!=0x0F)   
+    if((GPIO_ReadInputData(GPIOD)>>8&0xFF)!=0x0F)   
     {   
         delay_ms(10);  
-        if((GPIO_ReadInputData(GPIOE)>>8&0xFF)!=0x0F&&KeyHold ==0)   
+        if((GPIO_ReadInputData(GPIOD)>>8&0xFF)!=0x0F&&KeyHold ==0)   
         {   
             
-            GPIO_SetBits(GPIOE,GPIO_Pin_8);   
-            GPIO_ResetBits(GPIOE,GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11);  
+            GPIO_SetBits(GPIOD,GPIO_Pin_8);   
+            GPIO_ResetBits(GPIOD,GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11);  
       
-            switch(GPIO_ReadInputData(GPIOE)>>8&0xFF)  
+            switch(GPIO_ReadInputData(GPIOD)>>8&0xFF)  
             {   
                 case 0x11:KeyValue=12;break;   
 
@@ -102,10 +102,10 @@ char keypress(void)
                 case 0x81:KeyValue=10;break;   
             }   
             
-            GPIO_SetBits(GPIOE,GPIO_Pin_9);  
-            GPIO_ResetBits(GPIOE,GPIO_Pin_8|GPIO_Pin_10|GPIO_Pin_11);  
+            GPIO_SetBits(GPIOD,GPIO_Pin_9);  
+            GPIO_ResetBits(GPIOD,GPIO_Pin_8|GPIO_Pin_10|GPIO_Pin_11);  
 
-            switch(GPIO_ReadInputData(GPIOE)>>8&0xff)  
+            switch(GPIO_ReadInputData(GPIOD)>>8&0xff)  
             {   
              case 0x12:KeyValue=13;break;  
 
@@ -117,10 +117,10 @@ char keypress(void)
 
             }  
             
-            GPIO_SetBits(GPIOE,GPIO_Pin_10);   
-            GPIO_ResetBits(GPIOE,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_11);  
+            GPIO_SetBits(GPIOD,GPIO_Pin_10);   
+            GPIO_ResetBits(GPIOD,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_11);  
 
-            switch(GPIO_ReadInputData(GPIOE)>>8&0xff)  
+            switch(GPIO_ReadInputData(GPIOD)>>8&0xff)  
             {   
                 case 0x14:KeyValue=14;break;  
 
@@ -131,10 +131,10 @@ char keypress(void)
                 case 0x84:KeyValue=4;break;  
             }   
             
-            GPIO_SetBits(GPIOE,GPIO_Pin_11);   
-            GPIO_ResetBits(GPIOE,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10);  
+            GPIO_SetBits(GPIOD,GPIO_Pin_11);   
+            GPIO_ResetBits(GPIOD,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10);  
                             
-            switch(GPIO_ReadInputData(GPIOE)>>8&0xff)   
+            switch(GPIO_ReadInputData(GPIOD)>>8&0xff)   
             {  
                 case 0x18:KeyValue=15;break;  
 
@@ -144,9 +144,9 @@ char keypress(void)
 
                 case 0x88:KeyValue=7;break;   
             }   
-            GPIO_SetBits(GPIOE,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10 |GPIO_Pin_11);   
-            GPIO_ResetBits(GPIOE, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 |GPIO_Pin_15);  
-            if((GPIO_ReadInputData(GPIOE)>>8&0xff)==0x0F&&KeyHold==1)    //按下就会中断程序
+            GPIO_SetBits(GPIOD,GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10 |GPIO_Pin_11);   
+            GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 |GPIO_Pin_15);  
+            if((GPIO_ReadInputData(GPIOD)>>8&0xff)==0x0F&&KeyHold==1)    //按下就会中断程序
             {
                 KeyValue = 17;
             }
