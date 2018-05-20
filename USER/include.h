@@ -28,4 +28,5 @@ extern u8 empty_key[4];
 extern u8 display_manual;
 extern u8 enter_press ;
 extern u8 control_door_flag;
+extern u8 beep_count;
 #endif

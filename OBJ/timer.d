@@ -45,3 +45,4 @@
 ..\obj\timer.o: ..\SAVE\MALLOC\malloc.h
 ..\obj\timer.o: ..\SAVE\LCD\lcd.h
 ..\obj\timer.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\timer.o: ..\SAVE\beep\beep.h

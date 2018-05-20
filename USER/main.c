@@ -13,7 +13,7 @@
 #include "timer.h"
 #include "door.h"
 #include "RC522.h"
-
+#include "beep.h"
 
 
 u16 ValidN;//模块内有效指纹个数
@@ -30,6 +30,7 @@ u8 password[4]={"1234"};
 u8 num1 = 0;
 u8 ic_card_key[4]={6,6,6,6};
 u8 num2 = 0;
+u8 beep_count = 0;
 
 u8 password_status = 0;
 u8 ic_card_status = 0;
@@ -62,6 +63,7 @@ int main()
     
     
     led_init();
+    beep_init();
     key_init();
     door_init();
     IIC_Init();
@@ -148,6 +150,11 @@ int main()
     
     SPI2_Init();
     MFRC522_Initializtion();
+    warn(1);
+    
+    delay_ms(100);
+    warn(0);
+    beep_count =0 ;
     while(1)
     {
         led1 = ~led1;
@@ -214,6 +221,7 @@ int main()
     }
     MANUL:
     triget = 0;
+    beep_count = 0;
     SPI2_Init();
     MFRC522_Initializtion();
     LCD_Fill(0,0,130,160,WHITE);
@@ -288,7 +296,7 @@ int main()
         {
             triget = 1;
             BACK_COLOR = WHITE;
-            LCD_Fill(0,0,130,80,WHITE);
+            LCD_Fill(0,0,130,100,WHITE);
             LCD_ShowString(0,15,12*10,12,12,"input old password");
             password_status = 1;
             ic_card_status = 0;

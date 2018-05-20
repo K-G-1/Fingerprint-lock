@@ -588,9 +588,13 @@ const char *EnsureMessage(u8 ensure)
 		case  0x07:
 			p="指纹图像正常，但特征点太少（或面积太小）而生不成特征";break;
 		case  0x08:
-			p="指纹不匹配";break;
+			p="指纹不匹配";
+            beep_count ++;
+            break;
 		case  0x09:
-			p="没搜索到指纹";break;
+			p="没搜索到指纹";
+            beep_count ++;
+            break;
 		case  0x0a:
 			p="特征合并失败";break;
 		case  0x0b:
@@ -685,7 +689,10 @@ void press_FR(void)
 
 			}
 			else 
-				ShowErrMessage(ensure);					
+            {
+                
+				ShowErrMessage(ensure);	
+            }				
 	  }
 		else
 			ShowErrMessage(ensure);

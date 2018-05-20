@@ -168,6 +168,7 @@ void ChangeMode(u8 key_value)
     {
 
         use_machine ++;
+        beep_count =0;
         if(use_machine>2)
             use_machine = 0;
         LCD_Fill(0,100,120,160,WHITE); //≥ı º«Â∆¡
@@ -185,8 +186,8 @@ void KeyOpen(u8 key_value)
 {
 
     static u8 num = 0;
-    
-    LCD_ShowxNum(0,130,key_value,2,12,0);
+    u8 i = 0;
+//    LCD_ShowxNum(0,130,key_value,2,12,0);
     if(key_value!= 17)
     {
         if(key_value<10&&num<4)                 // ‰»Î√‹¬Î
@@ -209,7 +210,10 @@ void KeyOpen(u8 key_value)
                     control_door_flag = 1;
                 }
                 else
+                {
+                    beep_count++;
                     LCD_ShowString(0,145,120,12,12,(u8 *)"password error ");
+                }
                 num = 0;
                 memset(key_input,0,sizeof(key_input));
             }
@@ -326,8 +330,13 @@ void KeyOpen(u8 key_value)
             ;
         }
     }
-
-    LCD_ShowString(60,130,24,12,12,key_input);
+    
+    LCD_ShowString(60,120,128,12,12,"      ");
+    for(i= 0; i<num; i++)
+    {
+        LCD_ShowString(60+i*8,120,8,12,12,"*");
+    }
+//    LCD_ShowString(60,130,24,12,12,key_input);
 }
 
 int my_strcmp(char const *p,char const *q)  

@@ -3,9 +3,9 @@
 #include "sys.h"
 
 
-#define BEEP PFout(8)
+#define BEEP PBout(2)
 
 void beep_init(void);
 
-
+void warn(u8 status);
 #endif

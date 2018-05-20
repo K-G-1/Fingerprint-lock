@@ -57,3 +57,4 @@
 ..\obj\main.o: ..\SAVE\RCC522\RC522.h
 ..\obj\main.o: ..\SAVE\RCC522\RFID_API.h
 ..\obj\main.o: ..\SAVE\RCC522\RC522.h
+..\obj\main.o: ..\SAVE\beep\beep.h

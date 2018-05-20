@@ -35,6 +35,7 @@
 "..\obj\rc522.o"
 "..\obj\rfid_api.o"
 "..\obj\malloc.o"
+"..\obj\beep.o"
 --library_type=microlib --strict --scatter "..\OBJ\≈‹¬Ìµ∆.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

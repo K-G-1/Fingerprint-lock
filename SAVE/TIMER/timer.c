@@ -2,6 +2,7 @@
 #include "key.h"
 #include "include.h"
 #include "lcd.h"
+#include "beep.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F407开发板
@@ -90,9 +91,11 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 
 extern u8 use_machine;
 extern u8 display_manual ;
+extern u8 beep_count ;
 extern u8 control_door_flag;
 static u8 times_count_1 = 0;
 static u16 times_count_2 = 0;
+static u16 times_count_3 = 0;
 extern u8 manual_cmd;
 //定时器3中断服务程序		    
 void TIM3_IRQHandler(void)
@@ -116,11 +119,16 @@ void TIM3_IRQHandler(void)
         {
             use_manual(key_value);
         }
+        
         if(times_count_1>=100)//100*10 ==1000ms
         {
+            if(beep_count >= 3)
+            {
+                times_count_3 ++;
+            }
             times_count_1 = 0;
         }
-        
+//步进电机延时        
         if(control_door_flag != 0)
         {
             times_count_2++;
@@ -133,6 +141,16 @@ void TIM3_IRQHandler(void)
         {
             times_count_2=0;
             control_door_flag = 0;
+        }
+//报警延时
+        if(times_count_3 >=3)
+        {
+            warn(0);
+            beep_count =0;
+        }
+        else if(times_count_3 > 0)
+        {
+            warn(1);
         }
 		TIM_ClearITPendingBit(TIM3, TIM_IT_Update  );  //清除TIM7更新中断标志    
 	}	    
