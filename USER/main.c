@@ -14,7 +14,7 @@
 #include "door.h"
 #include "RC522.h"
 #include "beep.h"
-
+#include "stmflash.h"
 
 u16 ValidN;//模块内有效指纹个数
 /***************************************************
@@ -26,7 +26,9 @@ u16 ValidN;//模块内有效指纹个数
 u8 use_machine = 0 ;
 u8 key_input[5]={"    "};
 u8 empty_key[4]={0,0,0,0};
-u8 password[4]={"1234"};
+
+//u8 password[4]={"1234"};
+u8 password[4];
 u8 num1 = 0;
 u8 ic_card_key[4]={6,6,6,6};
 u8 num2 = 0;
@@ -41,7 +43,6 @@ u8 control_door_flag = 0;
 
 u8 display_manual = 0;
 u8 manual_cmd = 0;
-
 
 /***************************************************
 *@version		:V1.0
@@ -77,6 +78,9 @@ int main()
     TIM3_Int_Init(100-1,8400-1);	//10ms
     my_mem_init(SRAMIN);		//初始化内部内存池
     memset(key_input,0,sizeof(key_input));
+//    STMFLASH_Write(FLASH_SAVE_ADDR,(u32*)password,SIZE);  //写入flash 保存密码
+    STMFLASH_Read(FLASH_SAVE_ADDR,(u32*)password,SIZE);
+//    STMFLASH_Write(FLASH_SAVE_ADDR,(u32*)password,SIZE);  //写入flash 保存密码
 #if USE_SPI_TFT
 
     LCD_Init();

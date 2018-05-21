@@ -9,6 +9,11 @@
 #include "malloc.h"
 
 
+
+#define FLASH_SAVE_ADDR  0X080E0000 	//设置FLASH 保存地址(必须为偶数，且所在扇区,要大于本代码所占用到的扇区.
+#define TEXT_LENTH sizeof(password)	 		  	//数组长度	
+#define SIZE TEXT_LENTH/4+((TEXT_LENTH%4)?1:0)
+
 extern u16 ValidN;
 extern u8 use_machine;
 /***************************************************

@@ -3,7 +3,7 @@
 #include "include.h"
 #include "lcd.h"
 #include "RFID_API.h"
-
+#include "stmflash.h"
 /***************************************************
 *@version		:V1.0
 *@CreatDate		:2018/5/5
@@ -238,6 +238,7 @@ void KeyOpen(u8 key_value)
             {
                 strcpy((char *)password, (char *)key_input);
                 LCD_ShowString(0,115,120,12,12,(u8 *)"modif   success!!!   ");
+                
                 password_status = 0;
                 num=0;
                 memset(key_input,' ',4*sizeof(u8));
@@ -386,6 +387,7 @@ void add_password(void)
         LCD_ShowString(0,15,12*10,12,12,"password modif ok ");
         LCD_ShowString(0,30,12*10,12,12,"                  ");
         strcpy((char *)password, (char *)key_input);
+        STMFLASH_Write(FLASH_SAVE_ADDR,(u32*)password,SIZE);  //–¥»Îflash ±£¥Ê√‹¬Î
         password_status = 0;
 
     }

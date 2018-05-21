@@ -48,3 +48,4 @@
 ..\obj\key.o: ..\SAVE\RCC522\RC522.h
 ..\obj\key.o: ..\SAVE\RCC522\RFID_API.h
 ..\obj\key.o: ..\SAVE\SPI\spi.h
+..\obj\key.o: ..\SAVE\STMFLASH\stmflash.h

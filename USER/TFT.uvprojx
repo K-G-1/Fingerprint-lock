@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\CORE;..\FWLIB\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SAVE;..\SAVE\24CXX;..\SYSTEM\usart;..\SAVE\oled;..\SAVE\AS608;..\SAVE\USART2;..\SAVE\TIMER;..\SAVE\FLASH;..\SAVE\LCD;..\SAVE\SPI;..\SAVE\key;..\SAVE\RCC522;..\SAVE\MALLOC;..\SAVE\beep</IncludePath>
+              <IncludePath>..\USER;..\CORE;..\FWLIB\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SAVE;..\SAVE\24CXX;..\SYSTEM\usart;..\SAVE\oled;..\SAVE\AS608;..\SAVE\USART2;..\SAVE\TIMER;..\SAVE\FLASH;..\SAVE\LCD;..\SAVE\SPI;..\SAVE\key;..\SAVE\RCC522;..\SAVE\MALLOC;..\SAVE\beep;..\SAVE\STMFLASH</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -612,6 +612,11 @@
               <FileName>beep.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SAVE\beep\beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>stmflash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SAVE\STMFLASH\stmflash.c</FilePath>
             </File>
           </Files>
         </Group>
