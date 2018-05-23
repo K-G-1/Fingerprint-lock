@@ -25,7 +25,7 @@ u8 RC522_search(void)
     }
     else 
     {
-        LCD_ShowString(0,115,120,12,12,"no card");
+        LCD_ShowString(0,115,120,12,12,"no   card");
     }
     return status;
 }

@@ -147,6 +147,7 @@ void TIM3_IRQHandler(void)
         {
             warn(0);
             beep_count =0;
+            times_count_3 = 0;
         }
         else if(times_count_3 > 0)
         {
